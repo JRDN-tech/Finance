@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h2> Funds Remaining: {{ funds }} </h2>
+
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Buy Value</th>
+                <th>Shares</th>
+                <th>Current Value (per stock)</th>
+                <th>Current Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stocks in stocks %}
+            <tr>
+                <td>{{ stocks["symbol"] }}</td>
+                <td>{{ stocks["name"]   }}</td>
+                <td>{{ stocks["value"] | usd }}</td>
+                <td>{{ stocks["shares"] }}</td>
+                <td>{{ stocks["price"] | usd  }}</td>
+                <td>{{ stocks["cost"] | usd   }}</td>
+
+            {% endfor %}
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="thick">All stocks value:</td>
+                <td class="thick">{{ total }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="thick">TOTAL (w/funds):</td>
+                <td class="thick">{{ grand_total }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
