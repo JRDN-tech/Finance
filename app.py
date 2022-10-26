@@ -274,7 +274,7 @@ def Add_Funds():
             add_funds = float(request.form.get("funds"))
             if add_funds < 0:
                 return apology("Please enter a positive value")
-        except TypeError:
+        except TypeError and ValueError:
             return apology("Type only a positive number. No Dollar signs or commas!")
         og_funds = db.execute("SELECT cash FROM users WHERE id=?",session["user_id"])
         funds = add_funds + og_funds[0]["cash"]
