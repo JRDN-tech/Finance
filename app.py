@@ -32,7 +32,7 @@ if not os.environ.get("API_KEY"):
 
 @app.route("/about")
 def about():
-    return render_tempalte("about.html")
+    return render_template("about.html")
 
 @app.after_request
 def after_request(response):
